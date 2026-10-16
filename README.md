@@ -12,7 +12,9 @@ Open `preview.html` directly in your browser. It has embedded styles and scripts
 npm run dev
 ```
 
-Open http://localhost:4321. This builds and serves the site; restart the command after source changes.
+Open http://localhost:4321. Leave the server running while you edit: changes in `src/`, `public/`, and `scripts/` automatically rebuild the site and refresh open browser tabs. Build errors appear in the terminal; fix the file and save to retry. Press Ctrl+C to stop.
+
+Use `npm run preview` to build and serve without watching or automatic refresh. Live refresh is only injected by the dev server; production files stay unchanged.
 
 ## Build for hosting
 

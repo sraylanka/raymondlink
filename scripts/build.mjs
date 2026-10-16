@@ -1,9 +1,11 @@
-import { mkdir, cp, writeFile, readFile } from 'node:fs/promises';
+import { mkdir, cp, writeFile, readFile, rm } from 'node:fs/promises';
 import { render } from '../src/site.mjs';
+const html = render();
+await rm('dist', { recursive: true, force: true });
 await mkdir('dist', { recursive: true });
 await cp('public', 'dist', { recursive: true });
 await cp('src/styles/site.css', 'dist/site.css');
 await cp('src/client.js', 'dist/client.js');
-await writeFile('dist/index.html', render());
-await writeFile('dist/404.html', (await readFile('src/404.html','utf8')));
+await writeFile('dist/index.html', html);
+await writeFile('dist/404.html', await readFile('src/404.html', 'utf8'));
 console.log('Built raymondlink → dist/');
